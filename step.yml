@@ -24,13 +24,13 @@ toolkit:
     package_name: github.com/bitrise-steplib/bitrise-step-android-unit-test
 
 inputs:
-  - project_location: $BITRISE_SOURCE_DIR
+  - project_location: $PROJECT_LOCATION
     opts:
       title: Project Location
       summary: "The root directory of your android project, for example, where your root build gradle file exists (also gradlew, settings.gradle, etc...)"
       description: "The root directory of your android project, for example, where your root build gradle file exists (also gradlew, settings.gradle, etc...)"
       is_required: true
-  - module: ""
+  - module: $MODULE
     opts:
       title: Module
       summary: |
@@ -38,7 +38,7 @@ inputs:
       description: |
         Set the module that you want to test. To see your available modules, please open your project in Android Studio and go to [Project Structure] and see the list on the left.
       is_required: false
-  - variant: ""
+  - variant: $VARIANT
     opts:
       title: Variants
       summary: |
