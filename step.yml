@@ -40,11 +40,11 @@ inputs:
       is_required: false
   - variant: ""
     opts:
-      title: Variant
+      title: Variants
       summary: |
-        Set the variant that you want to test. To see your available variants, please open your project in Android Studio and go to [Project Structure] -> variants section.
+        Set the variants that you want to test (comma-separated list). To see your available variants, please open your project in Android Studio and go to [Project Structure] -> variants section.
       description: |
-        Set the variant that you want to test. To see your available variants, please open your project in Android Studio and go to [Project Structure] -> variants section.
+        Set the variants that you want to test (comma-separated list). To see your available variants, please open your project in Android Studio and go to [Project Structure] -> variants section.
       is_required: false
   - arguments:
     opts:
