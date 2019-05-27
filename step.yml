@@ -1,8 +1,8 @@
 title: Android Unit Test
 summary: This step runs your Android project's unit tests.
 description: This step runs your Android project's unit tests.
-website: https://github.com/bitrise-steplib/bitrise-step-android-unit-test
-source_code_url: https://github.com/bitrise-steplib/bitrise-step-android-unit-test
+website: https://github.com/tvietinghoff/bitrise-step-android-unit-test
+source_code_url: https://github.com/tvietinghoff/bitrise-step-android-unit-test
 support_url: https://github.com/bitrise-steplib/bitrise-step-android-unit-test/issues
 host_os_tags:
   - osx-10.10
