@@ -95,10 +95,17 @@ func filterVariants(module, variant string, variantsMap gradle.Variants) (gradle
 	if variant == "" {
 		return variantsMap, nil
 	}
+
+	// convert comma separated list of variants to lookup map for requested variants
+	requestedVariants := make(map[string]bool)
+	for _, v := range strings.Split(variant, ",") {
+        requestedVariants[strings.ToLower(strings.Trim(v, " "))+"unittest"] = true
+	}
+
 	filteredVariants := gradle.Variants{}
 	for m, variants := range variantsMap {
 		for _, v := range variants {
-			if strings.ToLower(v) == strings.ToLower(variant+"UnitTest") {
+		    if (requestedVariants[strings.ToLower(v)){
 				filteredVariants[m] = append(filteredVariants[m], v)
 			}
 		}
