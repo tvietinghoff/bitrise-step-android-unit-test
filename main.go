@@ -95,23 +95,27 @@ func filterVariants(module, variant string, variantsMap gradle.Variants) (gradle
 	if variant == "" {
 		return variantsMap, nil
 	}
-
-	// convert comma separated list of variants to lookup map for requested variants
-	requestedVariants := make(map[string]bool)
-	for _, v := range strings.Split(variant, ",") {
-        requestedVariants[strings.ToLower(strings.Trim(v, " "))+"unittest"] = true
+	variantsWanted := make(map[string]int)
+	for _, v := range strings.Split(variant, " ") {
+		v = strings.TrimSpace(v)
+		if len(v) > 0 {
+			variantsWanted[strings.ToLower(v)] = 1
+		}
 	}
-
 	filteredVariants := gradle.Variants{}
 	for m, variants := range variantsMap {
 		for _, v := range variants {
-		    if (requestedVariants[strings.ToLower(v)]){
+			v = strings.ToLower(v)
+			if variantsWanted[v] > 0 {
 				filteredVariants[m] = append(filteredVariants[m], v)
+				variantsWanted[v]++
 			}
 		}
 	}
-	if len(filteredVariants) == 0 {
-		return nil, fmt.Errorf("variant: %s not found in any module", variant)
+	for key, count := range variantsWanted {
+		if count == 1 {
+			return nil, fmt.Errorf("variant: %s not found in any module", key)
+		}
 	}
 	return filteredVariants, nil
 }
@@ -224,7 +228,7 @@ func main() {
 					log.Warnf("Failed to export test results for test addon: cannot get export directory for artifact (%s): %s", err)
 					continue
 				}
-	
+
 				if err := testaddon.ExportArtifact(artifact.Path, baseDir, uniqueDir); err != nil {
 					log.Warnf("Failed to export test results for test addon: %s", err)
 				}
@@ -232,7 +236,6 @@ func main() {
 			log.Printf("  Exporting test results to test addon successful [ %s ] ", baseDir)
 		}
 	}
-
 
 	if testErr != nil {
 		os.Exit(1)
