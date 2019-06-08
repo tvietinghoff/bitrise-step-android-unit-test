@@ -3,6 +3,17 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:e935dd82be8de69ef50d583046102f272ffd4060c3a15c0bf4a885450de42d12"
+  name = "github.com/bitrise-io/go-steputils"
+  packages = [
+    "cache",
+    "tools",
+  ]
+  pruneopts = "UT"
+  revision = "cecc766da84859e37e780d9d1c416f0f3993e6b1"
+
+[[projects]]
+  branch = "master"
   digest = "1:85393b915166ab4c4adc6578bdfaf778738b1b8a265a2f7555904755199c1d6f"
   name = "github.com/bitrise-io/go-utils"
   packages = [
@@ -19,6 +30,17 @@
   ]
   pruneopts = "UT"
   revision = "2a09aab8380d7842750328aebd5671bcccea89c8"
+
+[[projects]]
+  digest = "1:95b8aad739f1326c3c14ac6a7e75e89cb4a16c99d96070651664e022fc0030ae"
+  name = "github.com/bitrise-steplib/bitrise-step-android-unit-test"
+  packages = [
+    "cache",
+    "testaddon",
+  ]
+  pruneopts = "UT"
+  revision = "dd2535d711f8515202beb3f02ef43c9b2c268b5b"
+  version = "0.11.1"
 
 [[projects]]
   branch = "master"
@@ -60,10 +82,13 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/bitrise-io/go-utils/command",
     "github.com/bitrise-io/go-utils/fileutil",
     "github.com/bitrise-io/go-utils/log",
     "github.com/bitrise-io/go-utils/pathutil",
     "github.com/bitrise-io/go-utils/sliceutil",
+    "github.com/bitrise-steplib/bitrise-step-android-unit-test/cache",
+    "github.com/bitrise-steplib/bitrise-step-android-unit-test/testaddon",
     "github.com/bitrise-tools/go-android/gradle",
     "github.com/bitrise-tools/go-steputils/cache",
     "github.com/bitrise-tools/go-steputils/stepconf",
