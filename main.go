@@ -99,7 +99,7 @@ func filterVariants(module, variant string, variantsMap gradle.Variants) (gradle
 	for _, v := range strings.Split(variant, " ") {
 		v = strings.TrimSpace(v)
 		if len(v) > 0 {
-			variantsWanted[strings.ToLower(v)] = 1
+			variantsWanted[strings.ToLower(v)+"unittest"] = 1
 		}
 	}
 	filteredVariants := gradle.Variants{}
